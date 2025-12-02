@@ -731,6 +731,7 @@ app.get("/api/orders/my", authMiddleware, async (req, res) => {
   }
 });
 
+
 // Serve React frontend (production build)
 const frontendPath = path.join(__dirname, "dist");
 
@@ -738,7 +739,7 @@ const frontendPath = path.join(__dirname, "dist");
 app.use(express.static(frontendPath));
 
 // For any non-API route, send back index.html (for React Router)
-app.get("*", (req, res) => {
+app.get("/*", (req, res) => {
   res.sendFile(path.join(frontendPath, "index.html"));
 });
 
